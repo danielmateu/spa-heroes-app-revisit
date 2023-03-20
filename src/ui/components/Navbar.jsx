@@ -6,13 +6,14 @@ import { Lupa } from '../icons/Lupa';
 
 export const Navbar = () => {
 
-    const { user } = useContext(AuthContext)
+    const { user, logout } = useContext(AuthContext)
     // console.log(user);
 
     const navigate = useNavigate()
 
     const onLogout = () => {
-        localStorage.removeItem('user')
+        
+        logout()
         navigate('/login', { replace: true })
     }
 
