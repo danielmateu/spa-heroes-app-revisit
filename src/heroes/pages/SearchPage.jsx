@@ -11,21 +11,23 @@ const SearchPage = () => {
     const navigate = useNavigate()
     const location = useLocation()
 
-    const {q = ''} = queryString.parse(location.search)
-    // console.log({location});
+    const { q = '' } = queryString.parse(location.search)
     const heroesFiltered = getHeroesByName(q)
 
-    const {searchText, onInputChange} = useForm({
+    const showSearchResults = (q.length === 0) 
+    const showNoResults = (q.length > 0 && heroesFiltered.length === 0)
+
+    const { searchText, onInputChange } = useForm({
         searchText: q,
     })
 
     const onSearchSubmit = (e) => {
         e.preventDefault()
-        if(searchText.trim().length <=1 ) return
+        // if(searchText.trim().length <=1 ) return
         navigate(`?q=${searchText.toLowerCase().trim()}`)
     }
 
-    
+
 
     return (
         <main className="flex gap-10 py-10">
@@ -53,18 +55,19 @@ const SearchPage = () => {
             </div>
             <div className='w-6/12'>
                 <h4>Results</h4>
-                {
+                {/* {
                     (q === '') && <div className="alert alert-primary">Search a hero</div>
-                }
-                {/* <div className="alert alert-primary">Search a hero</div> */}
-                {
+                } */}
+                {/* {
                     (q !== '' && heroesFiltered.length === 0) && <div className="alert alert-danger">There's no results with <b>{q}</b></div>
-                }
-                {/* <div className="alert alert-danger">There's no results with <b>{q}</b></div> */}
+                } */}
+
+                <div className="alert alert-primary" style={{display: showSearchResults ? '' : 'none'}}>Search a hero</div>
+
+                <div className="alert alert-danger" style={{display:  showNoResults ? '' : 'none'}}>There's no results with <b>{q}</b></div>
                 {
                     heroesFiltered.map(hero => (
-                        // <div key={hero.id}>{hero.superhero}</div>
-                        <HeroCard key={hero.id} hero={hero}/>
+                        <HeroCard key={hero.id} hero={hero} />
                     ))
                 }
             </div>
