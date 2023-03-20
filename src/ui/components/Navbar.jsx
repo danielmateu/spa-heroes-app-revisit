@@ -1,8 +1,13 @@
 
+import { useContext } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../auth/context/AuthContext';
 import { Lupa } from '../icons/Lupa';
 
 export const Navbar = () => {
+
+    const { user } = useContext(AuthContext)
+    // console.log(user);
 
     const navigate = useNavigate()
 
@@ -49,7 +54,7 @@ export const Navbar = () => {
                     <span
                         className="nav-item nav-link text-info"
                     >
-                        Dani
+                        {user?.name}
                     </span>
                     <button
                         onClick={onLogout}

@@ -1,12 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { AuthContext } from '../context/AuthContext'
 
 const LoginPage = () => {
 
+    const { login } = useContext(AuthContext)
     const navigate = useNavigate()
 
     const onLogin = () => {
-        localStorage.setItem('user', 'Dani')
+        // localStorage.setItem('user', 'Dani')
+        login('Dani')
         navigate('/', { replace: true })
 
         // Navigate to the last page
