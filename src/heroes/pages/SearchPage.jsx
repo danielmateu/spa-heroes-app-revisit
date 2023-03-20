@@ -27,8 +27,6 @@ const SearchPage = () => {
         navigate(`?q=${searchText.toLowerCase().trim()}`)
     }
 
-
-
     return (
         <main className="flex gap-10 py-10">
             <div className='w-6/12'>
@@ -55,12 +53,6 @@ const SearchPage = () => {
             </div>
             <div className='w-6/12'>
                 <h4>Results</h4>
-                {/* {
-                    (q === '') && <div className="alert alert-primary">Search a hero</div>
-                } */}
-                {/* {
-                    (q !== '' && heroesFiltered.length === 0) && <div className="alert alert-danger">There's no results with <b>{q}</b></div>
-                } */}
 
                 <div className="alert alert-primary" style={{display: showSearchResults ? '' : 'none'}}>Search a hero</div>
 
