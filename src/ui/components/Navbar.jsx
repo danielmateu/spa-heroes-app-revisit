@@ -18,10 +18,10 @@ export const Navbar = () => {
                 className="navbar-brand"
                 to="/"
             >
-                Asociaciones
+                Comics App 
             </Link>
 
-            <div className="navbar-collapse">
+            <div className="navbar-collapse flex">
                 <div className="navbar-nav">
                     {/* if is className is active change the styles*/}
                     <NavLink
@@ -37,12 +37,9 @@ export const Navbar = () => {
                     >
                         DC
                     </NavLink>
-
-
                 </div>
 
                 <div className="navbar-nav ml-auto flex items-center">
-
                     <NavLink
                         className={({ isActive }) => `nav-item nav-link ${isActive ? 'active' : ''}`}
                         to="/search"
