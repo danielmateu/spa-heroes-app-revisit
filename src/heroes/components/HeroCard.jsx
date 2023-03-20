@@ -17,9 +17,9 @@ export const HeroCard = ({ hero }) => {
                 <p className='text-slate-500 '>{superhero}</p>
                 <p className='text-slate-400 text-start'>{alter_ego}</p>
                 
-                {
+                {/* {
                     (alter_ego !== characters) && charactersByHero
-                }
+                } */}
 
                 <p className='text-slate-300 text-start'>{first_appearance}</p>
 
