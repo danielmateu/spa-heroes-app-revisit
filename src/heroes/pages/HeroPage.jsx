@@ -1,13 +1,14 @@
 
+import { useMemo } from 'react'
 import { useParams, Navigate } from 'react-router-dom'
 import { getHeroById } from '../helpers/getHeroById'
 
 const HeroPage = () => {
 
     const params = useParams()
-
     const { heroId } = params
-    const hero = getHeroById(heroId)
+
+    const hero = useMemo(() => getHeroById(heroId), [heroId]); 
     if (!hero) return <Navigate to='/marvel' />
 
     const { superhero, publisher, alter_ego, first_appearance, characters } = hero
@@ -32,7 +33,7 @@ const HeroPage = () => {
 
             <button
                 onClick={handleReturn}
-                className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition'
+                className='bg-slate-500 hover:bg-slate-700 text-white font-bold py-2 px-4 rounded transition'
             >Go back</button>
 
         </main>
