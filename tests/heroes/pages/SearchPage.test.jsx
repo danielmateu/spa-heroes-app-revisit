@@ -78,11 +78,7 @@ describe('Pruebas sobre SearchPage', () => {
 
     test('Debe llamar el navigate a la pantalla nueva', () => {
 
-        const history = {
-            location: {
-                search: '?q=batman'
-            }
-        }
+        // const inputValue = 'batman'
         
         const navigate = jest.fn()
         render(
@@ -98,6 +94,6 @@ describe('Pruebas sobre SearchPage', () => {
         const form = screen.getByRole('form')
         form.submit()
 
-        expect(mockNavigate).toHaveBeenCalledWith('?q=batman')
+        expect(mockNavigate).toHaveBeenCalledWith(`?q=${inputValue.value}`)
     })
 })
