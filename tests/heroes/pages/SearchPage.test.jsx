@@ -19,4 +19,36 @@ describe('Pruebas sobre SearchPage', () => {
         // expect( screen.getByText('Search a hero') ).toBeTruthy()
         // expect( screen.queryByText('There\'s no results with') ).toBeNull()
     })
+
+    test('Debe mostrar a Batman si el usuario escribió batman', () => {
+        
+        const history = {
+            location: {
+                search: '?q=batman'
+            }
+        }
+
+        render(
+            <MemoryRouter
+                initialEntries={['/search?q=batman']}
+            >
+                <SearchPage history={history} />
+            </MemoryRouter>
+        )
+        const inputValue = screen.getByRole('textbox')
+        expect( screen.getByText('Batman') ).toBeTruthy()
+        expect( inputValue.value ).toBe('batman')
+        // const img = screen.getByRole('img')
+        // expect( img.src ).toContain('../../../heroes/dc-batman.jpg')
+        // screen.debug()
+        // to get the aria-label of an element
+        const searchAlert = screen.getByLabelText('search-alert')
+        // To appear in the document
+        expect( searchAlert ).toBeTruthy()
+
+        const dangerAlert = screen.queryByLabelText('danger-alert')
+        expect( dangerAlert.style ).toHaveProperty('display', 'none')
+
+
+    })
 })

@@ -14,7 +14,7 @@ const SearchPage = () => {
     const { q = '' } = queryString.parse(location.search)
     const heroesFiltered = getHeroesByName(q)
 
-    const showSearchResults = (q.length === 0) 
+    const showSearchResults = (q.length === 0)
     const showNoResults = (q.length > 0 && heroesFiltered.length === 0)
 
     const { searchText, onInputChange } = useForm({
@@ -54,9 +54,14 @@ const SearchPage = () => {
             <div className='w-6/12'>
                 <h4>Results</h4>
 
-                <div className="alert alert-primary" style={{display: showSearchResults ? '' : 'none'}}>Search a hero</div>
+                <div
+                    aria-label='search-alert'
+                    className="alert alert-primary" style={{ display: showSearchResults ? '' : 'none' }}
+                >Search a hero</div>
 
-                <div className="alert alert-danger" style={{display:  showNoResults ? '' : 'none'}}>There's no results with <b>{q}</b></div>
+                <div 
+                    aria-label='danger-alert'
+                className="alert alert-danger" style={{ display: showNoResults ? '' : 'none' }}>There's no results with <b>{q}</b></div>
                 {
                     heroesFiltered.map(hero => (
                         <HeroCard key={hero.id} hero={hero} />
