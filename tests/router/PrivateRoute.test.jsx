@@ -7,6 +7,7 @@ describe('Pruebas sobre PrivateRoute', () => {
 
     test('Debe mostrar el children si está autenticado', () => {
 
+       /* Mocking the localStorage.setItem function. */
         Storage.prototype.setItem = jest.fn();
 
         const contextValue = {
