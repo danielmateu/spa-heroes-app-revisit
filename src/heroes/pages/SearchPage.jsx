@@ -32,7 +32,9 @@ const SearchPage = () => {
             <div className='w-6/12'>
                 <div className='flex flex-col gap-10'>
                     {/* <h4>Searching</h4> */}
-                    <form action="" className='flex flex-col gap-4'
+                    <form 
+                        aria-label='form'
+                    action="" className='flex flex-col gap-4'
                         onSubmit={onSearchSubmit}
                     >
                         <label htmlFor="searchtext">Search your hero</label>
