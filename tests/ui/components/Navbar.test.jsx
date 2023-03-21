@@ -1,7 +1,14 @@
 import { render, screen } from "@testing-library/react"
-import { MemoryRouter } from "react-router-dom"
+import { MemoryRouter, useNavigate } from "react-router-dom"
 import { AuthContext } from "../../../src/auth/context/AuthContext"
 import { Navbar } from "../../../src/ui/components/Navbar"
+
+const mockUseNavigate = jest.fn()
+
+jest.mock('react-router-dom', () => ({
+    ...jest.requireActual('react-router-dom'),
+    useNavigate: () => mockUseNavigate,
+}))
 
 describe('Pruebas sobre Navbar', () => {
 
@@ -50,11 +57,9 @@ describe('Pruebas sobre Navbar', () => {
 
     test('Debe de llamar el logout y el useNavigate', () => {
 
-        
-
-        const historyMock = {
-            replace: jest.fn()
-        }
+        // const historyMock = {
+        //     replace: jest.fn()
+        // }
 
         render(
             <MemoryRouter>
@@ -68,6 +73,6 @@ describe('Pruebas sobre Navbar', () => {
         logoutButton.click()
 
         expect(contextValue.logout).toHaveBeenCalled()
-        // expect(historyMock.replace).toHaveBeenCalledWith('/login')
+        expect(mockUseNavigate).toHaveBeenCalledWith('/login', { replace: true})
     })
 })
