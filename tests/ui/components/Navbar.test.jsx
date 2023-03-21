@@ -57,10 +57,6 @@ describe('Pruebas sobre Navbar', () => {
 
     test('Debe de llamar el logout y el useNavigate', () => {
 
-        // const historyMock = {
-        //     replace: jest.fn()
-        // }
-
         render(
             <MemoryRouter>
                 <AuthContext.Provider value={contextValue}>
