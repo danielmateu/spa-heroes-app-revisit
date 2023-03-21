@@ -6,7 +6,6 @@ export const PrivateRoute = ({ children }) => {
 
     const { logged } = useContext(AuthContext);
     const {pathname, search} = useLocation()
-    // console.log(location);
     const lastPath = pathname + search;
     localStorage.setItem('lastPath', lastPath);
 
