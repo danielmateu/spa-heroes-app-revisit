@@ -19,23 +19,20 @@ const HeroPage = () => {
     }
 
     return (
-        <main className='flex flex-col md:flex-row p-10 gap-10'>
-
-            <img src={heroImage} alt={superhero} className='w-full'/>
-
-            <div className=' text-start'>
-                <h1 className='text-3xl'>{superhero}</h1>
-                <p className='text-2xl'><b>Aleter ego: </b>{alter_ego}</p>
-                <p className='text-2xl'><b>Publiser: </b>{publisher}</p>
-                <p className='text-2xl'><b>First appearance: </b>{first_appearance}</p>
-                <p className='text-2xl'><b>Characters: </b> {characters}</p>
+        <main className='flex flex-col md:flex-row py-10 gap-10 items-center justify-center'>
+            <img src={heroImage} alt={superhero} className='w-2/6'/>
+            <div className=' text-start w- flex flex-col gap-4'>
+                <h1 className='text-slate-500 text-3xl'>{superhero}</h1>
+                <hr />
+                <p className='text-slate-500 text-2xl'><b>Alter ego: </b><br /><small className='text-slate-400'>{alter_ego}</small></p>
+                <p className='text-slate-500 text-2xl'><b>Publiser: </b><br /><small className='text-slate-400'>{publisher}</small></p>
+                <p className='text-slate-500 text-2xl'><b>First appearance: </b><br /><small className='text-slate-400'>{first_appearance}</small></p>
+                <p className='text-slate-500 text-2xl'><b>Characters: </b><br /><small className='text-slate-400'>{characters}</small></p>
             </div>
-
             <button
                 onClick={handleReturn}
                 className='bg-slate-500 hover:bg-slate-700 text-white font-bold py-2 px-4 rounded transition'
             >Go back</button>
-
         </main>
     )
 }

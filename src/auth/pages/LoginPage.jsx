@@ -7,10 +7,12 @@ const LoginPage = () => {
     const { login } = useContext(AuthContext)
     const navigate = useNavigate()
 
-    const onLogin = () => {
-        // localStorage.setItem('user', 'Dani')
+    const onLogin = () => { 
+        
+        const lastPath = localStorage.getItem('lastPath') || '/'
+
         login('Dani')
-        navigate('/', { replace: true })
+        navigate(lastPath, { replace: true })
 
         // Navigate to the last page
         // window.history.back()
